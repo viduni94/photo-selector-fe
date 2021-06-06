@@ -6,7 +6,7 @@
   flex-direction: column;
 
   > div:not(:first-child) {
-      padding-top: 3rem;
+    padding-top: 3rem;
   }
 
   @media (max-width: 959px) {
