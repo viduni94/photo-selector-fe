@@ -1,0 +1,26 @@
+.subtitle {
+  color: #8d8d8d;
+  text-transform: uppercase;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.heading {
+  font-weight: 300;
+}
+
+.bodyText {
+  color: #b0b0b0;
+  margin-top: 1.5rem;
+  line-height: 2;
+}
+
+.saveButton {
+  margin-top: 1rem;
+  background-color: #16c716;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0f940f;
+  }
+}

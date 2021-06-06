@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  min-height: calc(100vh - 6rem);
+  width: calc(100vw - 6rem);
+
+  @media (max-width: 959px) {
+    width: calc(100vw - 7rem);
+  }
+}

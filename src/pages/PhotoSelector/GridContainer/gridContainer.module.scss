@@ -1,0 +1,11 @@
+.main {
+  height: calc(100vh - 6rem);
+  margin-left: 5rem;
+  overflow-y: scroll;
+
+  @media only screen and (max-width: 959px) {
+    margin-left: 0;
+    height: 100%;
+    overflow-y: auto;
+  }
+};

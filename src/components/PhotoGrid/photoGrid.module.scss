@@ -1,0 +1,51 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.gridList {
+  width: 100%;
+  height: 100%;
+
+  li {
+    height: unset !important;
+  }
+}
+
+.tile {
+  height: auto;
+  overflow: unset;
+  cursor: pointer;
+
+  > div {
+    height: auto;
+  }
+
+  img {
+    width: 100%;
+    top: 0;
+  }
+
+  .badge {
+    width: 94%;
+    height: 96%;
+    top: 0;
+    left: 0;
+    justify-content: flex-end;
+    position: absolute;
+    margin-top: 18px;
+    z-index: 99;
+
+    svg {
+      fill: #16c716;
+    }
+
+    span {
+      background-color: white;
+      color: black;
+      border: thin solid black;
+    }
+  }
+};

@@ -1,0 +1,16 @@
+.main {
+  height: calc(100vh - 6rem);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+
+  > div:not(:first-child) {
+      padding-top: 3rem;
+  }
+
+  @media (max-width: 959px) {
+    height: fit-content;
+    padding-bottom: 5rem;
+  }
+}
