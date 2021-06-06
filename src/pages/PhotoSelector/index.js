@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { connect } from 'react-redux';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
@@ -42,4 +42,4 @@ PhotoSelector.propTypes = {
   savePhotoSelection: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, { savePhotoSelection })(React.memo(PhotoSelector));
+export default connect(mapStateToProps, { savePhotoSelection })(memo(PhotoSelector));

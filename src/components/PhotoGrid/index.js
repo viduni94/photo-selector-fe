@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import Badge from '@material-ui/core/Badge';
 import GridList from '@material-ui/core/GridList';
@@ -75,4 +75,4 @@ PhotoGrid.defaultProps = {
   selectedPhotos: new Map(),
 };
 
-export default React.memo(PhotoGrid);
+export default memo(PhotoGrid);

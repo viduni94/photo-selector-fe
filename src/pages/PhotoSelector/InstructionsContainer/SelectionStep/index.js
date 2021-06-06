@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
@@ -64,4 +64,4 @@ SelectionStep.defaultProps = {
   buttonFunction: () => {},
 };
 
-export default connect(mapStateToProps)(React.memo(SelectionStep));
+export default connect(mapStateToProps)(memo(SelectionStep));

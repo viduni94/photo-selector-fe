@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import SelectionStep from 'pages/PhotoSelector/InstructionsContainer/SelectionStep';
 import messages from 'utils/messages';
@@ -29,4 +29,4 @@ InstructionsContainer.propTypes = {
   saveSelection: PropTypes.func.isRequired,
 };
 
-export default React.memo(InstructionsContainer);
+export default memo(InstructionsContainer);
