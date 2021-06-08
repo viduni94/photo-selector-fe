@@ -36,14 +36,14 @@ const PhotoGrid = ({ tileData, selectedPhotos, togglePhotoSelection }) => {
     <StylesProvider injectFirst>
       <div className={styles.root}>
         <GridList className={styles.gridList} cols={3}>
-          {tileData.map(tile => (
+          {tileData.map((tile, index) => (
             <GridListTile
               key={tile.id}
               cols={1}
               className={styles.tile}
               onClick={() => togglePhotoSelection(tile)}>
               {/* The index is passed to the URL to prevent browser caching for the image */}
-              <img src={tile.picture} alt={tile.title} />
+              <img src={`${tile.picture}?${index}`} alt={tile.title} />
               {isPhotoSelected({ photoId: tile.id, selectedPhotos }) ? (
                 <Badge
                   badgeContent={getBadgeContentForPhoto({

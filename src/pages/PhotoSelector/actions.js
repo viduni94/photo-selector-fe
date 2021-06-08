@@ -1,7 +1,7 @@
 import axios from 'axios';
+import uploadedPhotosData from 'pages/PhotoSelector/__mocks__/uploadedPhotosData.json';
 import {
   FETCH_UPLOADED_PHOTOS_SUCCESS,
-  FETCH_UPLOADED_PHOTOS_ERROR,
   SAVE_SELECTION_SUCCESS,
   SAVE_SELECTION_ERROR,
   STORE_SELECTED_PHOTOS,
@@ -13,20 +13,9 @@ const { links } = constants;
 
 // Get uploaded photos list
 export const getAllPhotos = () => async dispatch => {
-  const [error, result] = await to(axios.get(links.retrieveUploadedPhotosEndpoint));
-
-  if (result) {
-    return dispatch({
-      type: FETCH_UPLOADED_PHOTOS_SUCCESS,
-      payload: result.data,
-    });
-  }
-  dispatch({
-    type: FETCH_UPLOADED_PHOTOS_ERROR,
-    payload: {
-      status: error.response && error.response.status,
-      text: error.response && error.response.statusText,
-    },
+  return dispatch({
+    type: FETCH_UPLOADED_PHOTOS_SUCCESS,
+    payload: uploadedPhotosData.data,
   });
 };
 
