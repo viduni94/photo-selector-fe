@@ -21,4 +21,8 @@ export default {
       ' application',
     saveButtonText: 'Generate Photo Grid',
   },
+  error: {
+    text: 'Something went wrong. Please try again later',
+    buttonText: 'Reload Page',
+  },
 };

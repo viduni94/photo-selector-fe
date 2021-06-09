@@ -7,6 +7,6 @@ export default {
     retrieveUploadedPhotosEndpoint:
       // eslint-disable-next-line max-len
       'https://dev-pb-apps.s3-eu-west-1.amazonaws.com/collection/CHhASmTpKjaHyAsSaauThRqMMjWanYkQ.json',
-    photosGridEndpoint: '/photos-grid',
+    photosGridEndpoint: '/api/v1/photos-grid',
   },
 };

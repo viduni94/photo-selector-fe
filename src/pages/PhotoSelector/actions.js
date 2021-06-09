@@ -21,7 +21,6 @@ export const getAllPhotos = () => async dispatch => {
 
 // Store selected photos in the redux store
 export const storeSelectedPhotos = selectedPhotos => {
-  console.log(selectedPhotos);
   return {
     type: STORE_SELECTED_PHOTOS,
     payload: selectedPhotos,
@@ -30,20 +29,30 @@ export const storeSelectedPhotos = selectedPhotos => {
 
 // Save the selected photos
 export const savePhotoSelection = selectedPhotos => async dispatch => {
-  const [error, result] = await to(axios.post(links.photosGridEndpoint, selectedPhotos));
+  try {
+    const [error, result] = await to(axios.post(links.photosGridEndpoint, selectedPhotos));
 
-  if (result) {
+    if (result) {
+      return dispatch({
+        type: SAVE_SELECTION_SUCCESS,
+        payload: result.data,
+      });
+    }
+
     return dispatch({
-      type: SAVE_SELECTION_SUCCESS,
-      payload: result.data,
+      type: SAVE_SELECTION_ERROR,
+      payload: {
+        status: error.response && error.response.status,
+        text: error.response && error.response.statusText,
+      },
     });
+  } catch (error) {
+    dispatch({
+      type: SAVE_SELECTION_ERROR,
+      payload: {
+        text: JSON.stringify(error),
+      },
+    });
+    return Promise.reject(error);
   }
-
-  dispatch({
-    type: SAVE_SELECTION_ERROR,
-    payload: {
-      status: error.response && error.response.status,
-      text: error.response && error.response.statusText,
-    },
-  });
 };

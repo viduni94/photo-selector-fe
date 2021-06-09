@@ -4,6 +4,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import ErrorBoundary from 'components/ErrorBoundary';
 import { savePhotoSelection } from 'pages/PhotoSelector/actions';
 import GridContainer from 'pages/PhotoSelector/GridContainer';
 import InstructionsContainer from 'pages/PhotoSelector/InstructionsContainer';
@@ -18,16 +19,18 @@ const PhotoSelector = ({ selectedPhotos, savePhotoSelection: savePhotoSelectionA
   return (
     <>
       <div className={cx(pageStyles.container, styles.main)}>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
-              <InstructionsContainer saveSelection={saveSelection} />
+        <ErrorBoundary>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={4}>
+                <InstructionsContainer saveSelection={saveSelection} />
+              </Grid>
+              <Grid item xs={12} md={8}>
+                <GridContainer />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={8}>
-              <GridContainer />
-            </Grid>
-          </Grid>
-        </Box>
+          </Box>
+        </ErrorBoundary>
       </div>
     </>
   );

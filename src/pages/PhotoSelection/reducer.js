@@ -14,7 +14,6 @@ export default function photoSelectionReducer(state = initialState, action) {
   switch (action.type) {
     case STORE_SELECTED_PHOTOS:
     case SAVE_SELECTION_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         selectedPhotos: new Map(action.payload),
