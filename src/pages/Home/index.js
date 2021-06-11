@@ -42,13 +42,6 @@ const Home = ({ photoGrid, isFetchPhotoGridPending, fetchPhotoGrid: fetchPhotoGr
   return <div>{renderSection()}</div>;
 };
 
-const mapStateToProps = ({ photoSelection }) => ({
-  isFetchPhotoGridPending: photoSelection.isPending,
-  photoGrid: photoSelection.photoGrid,
-  fetchError: photoSelection.fetchError,
-  hasFetchError: photoSelection.hasFetchError,
-});
-
 Home.propTypes = {
   fetchPhotoGrid: PropTypes.func.isRequired,
   photoGrid: PropTypes.shape({
@@ -62,5 +55,12 @@ Home.defaultProps = {
   photoGrid: {},
   isFetchPhotoGridPending: true,
 };
+
+const mapStateToProps = ({ photoSelection }) => ({
+  isFetchPhotoGridPending: photoSelection.isPending,
+  photoGrid: photoSelection.photoGrid,
+  fetchError: photoSelection.fetchError,
+  hasFetchError: photoSelection.hasFetchError,
+});
 
 export default connect(mapStateToProps, { fetchPhotoGrid })(memo(Home));

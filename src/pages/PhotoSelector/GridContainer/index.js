@@ -60,12 +60,6 @@ class GridContainer extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ photoSelector, photoSelection }) => ({
-  uploadedPhotos: photoSelector.uploadedPhotos,
-  selectedPhotos: photoSelection.selectedPhotos,
-  photoGrid: photoSelection.photoGrid,
-});
-
 GridContainer.propTypes = {
   uploadedPhotos: PropTypes.instanceOf(Array),
   getAllPhotos: PropTypes.func.isRequired,
@@ -82,6 +76,12 @@ GridContainer.defaultProps = {
   uploadedPhotos: [],
   photoGrid: {},
 };
+
+const mapStateToProps = ({ photoSelector, photoSelection }) => ({
+  uploadedPhotos: photoSelector.uploadedPhotos,
+  selectedPhotos: photoSelection.selectedPhotos,
+  photoGrid: photoSelection.photoGrid,
+});
 
 export default connect(mapStateToProps, { getAllPhotos, storeSelectedPhotos, fetchPhotoGrid })(
   GridContainer,

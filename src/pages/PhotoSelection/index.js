@@ -58,11 +58,6 @@ const PhotoSelection = ({
   return <ErrorBoundary>{renderPhotoGrid()}</ErrorBoundary>;
 };
 
-const mapStateToProps = ({ photoSelection }) => ({
-  photoGrid: photoSelection.photoGrid,
-  isFetchPhotoGridPending: photoSelection.isPending,
-});
-
 PhotoSelection.propTypes = {
   photoGrid: PropTypes.shape({
     status: PropTypes.number,
@@ -76,5 +71,10 @@ PhotoSelection.defaultProps = {
   isFetchPhotoGridPending: false,
   photoGrid: {},
 };
+
+const mapStateToProps = ({ photoSelection }) => ({
+  photoGrid: photoSelection.photoGrid,
+  isFetchPhotoGridPending: photoSelection.isPending,
+});
 
 export default connect(mapStateToProps, { fetchPhotoGrid })(memo(PhotoSelection));

@@ -68,11 +68,6 @@ const SelectionStep = ({
   );
 };
 
-const mapStateToProps = ({ photoSelection }) => ({
-  selectedPhotos: photoSelection.selectedPhotos,
-  photoGrid: photoSelection.photoGrid,
-});
-
 SelectionStep.propTypes = {
   stepText: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
@@ -93,5 +88,10 @@ SelectionStep.defaultProps = {
   saveSelection: () => {},
   photoGrid: {},
 };
+
+const mapStateToProps = ({ photoSelection }) => ({
+  selectedPhotos: photoSelection.selectedPhotos,
+  photoGrid: photoSelection.photoGrid,
+});
 
 export default connect(mapStateToProps)(memo(SelectionStep));

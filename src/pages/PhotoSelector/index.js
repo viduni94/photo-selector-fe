@@ -60,12 +60,6 @@ const PhotoSelector = ({
   );
 };
 
-const mapStateToProps = ({ photoSelection, photoSelector }) => ({
-  selectedPhotos: photoSelection.selectedPhotos,
-  authorId: photoSelector.authorId,
-  photoGrid: photoSelection.photoGrid,
-});
-
 PhotoSelector.propTypes = {
   selectedPhotos: PropTypes.instanceOf(Map).isRequired,
   authorId: PropTypes.string,
@@ -81,6 +75,12 @@ PhotoSelector.defaultProps = {
   authorId: '',
   photoGrid: {},
 };
+
+const mapStateToProps = ({ photoSelection, photoSelector }) => ({
+  selectedPhotos: photoSelection.selectedPhotos,
+  authorId: photoSelector.authorId,
+  photoGrid: photoSelection.photoGrid,
+});
 
 export default connect(mapStateToProps, {
   savePhotoSelection,
