@@ -12,6 +12,7 @@ export default function photoSelectorReducer(state = initialState, action) {
       return {
         ...state,
         uploadedPhotos: action.payload.entries,
+        authorId: action.payload.author.id,
         hasError: false,
         error: undefined,
       };

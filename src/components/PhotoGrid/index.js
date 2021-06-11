@@ -24,14 +24,17 @@ const isPhotoSelected = ({ photoId, selectedPhotos }) => {
  * @param {*} selectedPhotos
  * @returns order count of the photo of @param photoId
  */
-const getBadgeContentForPhoto = ({ photoId, selectedPhotos }) => {
-  const photoIdArrayInOrder = [...selectedPhotos.keys()];
-  const indexOfPhoto = photoIdArrayInOrder && photoIdArrayInOrder.indexOf(photoId);
+const getBadgeContentForPhoto = ({ photoId, selectedPhotos, index, isEditMode }) => {
+  if (isEditMode) {
+    const photoIdArrayInOrder = [...selectedPhotos.keys()];
+    const indexOfPhoto = photoIdArrayInOrder && photoIdArrayInOrder.indexOf(photoId);
 
-  return indexOfPhoto + 1;
+    return indexOfPhoto + 1;
+  }
+  return index + 1;
 };
 
-const PhotoGrid = ({ tileData, selectedPhotos, togglePhotoSelection }) => {
+const PhotoGrid = ({ tileData, selectedPhotos, togglePhotoSelection, isEditMode }) => {
   return (
     <StylesProvider injectFirst>
       <div className={styles.root}>
@@ -41,20 +44,29 @@ const PhotoGrid = ({ tileData, selectedPhotos, togglePhotoSelection }) => {
               key={tile.id}
               cols={1}
               className={styles.tile}
-              onClick={() => togglePhotoSelection(tile)}>
+              onClick={isEditMode ? () => togglePhotoSelection(tile) : undefined}>
               {/* The index is passed to the URL to prevent browser caching for the image */}
               <img src={`${tile.picture}?${index}`} alt={tile.title} />
-              {isPhotoSelected({ photoId: tile.id, selectedPhotos }) ? (
+              {isEditMode && isPhotoSelected({ photoId: tile.id, selectedPhotos }) ? (
                 <Badge
                   badgeContent={getBadgeContentForPhoto({
                     photoId: tile.id,
                     selectedPhotos,
+                    isEditMode,
                   })}
                   className={styles.badge}>
                   <CheckBoxIcon />
                 </Badge>
               ) : (
-                ''
+                <Badge
+                  badgeContent={getBadgeContentForPhoto({
+                    photoId: tile.id,
+                    selectedPhotos,
+                    index,
+                    isEditMode,
+                  })}
+                  className={styles.badge}
+                />
               )}
             </GridListTile>
           ))}
@@ -67,12 +79,15 @@ const PhotoGrid = ({ tileData, selectedPhotos, togglePhotoSelection }) => {
 PhotoGrid.propTypes = {
   tileData: PropTypes.arrayOf(PropTypes.object),
   selectedPhotos: PropTypes.instanceOf(Map),
-  togglePhotoSelection: PropTypes.func.isRequired,
+  togglePhotoSelection: PropTypes.func,
+  isEditMode: PropTypes.bool,
 };
 
 PhotoGrid.defaultProps = {
   tileData: [],
   selectedPhotos: new Map(),
+  isEditMode: true,
+  togglePhotoSelection: () => {},
 };
 
 export default memo(PhotoGrid);

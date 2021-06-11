@@ -4,7 +4,7 @@ export default {
   common: {
     title: 'React Photo Selector',
   },
-  homePage: {
+  selectorPage: {
     stepTextOne: 'step 1',
     headingOne: 'Select Photos for the Grid',
     bodyTextOne:
@@ -20,6 +20,8 @@ export default {
       ' generate the photo grid. You can edit your photo grid anytime by visiting the' +
       ' application',
     saveButtonText: 'Generate Photo Grid',
+    updateButtonText: 'Update Photo Grid',
+    editButtonText: 'Edit Photo Grid',
   },
   error: {
     text: 'Something went wrong. Please try again later',

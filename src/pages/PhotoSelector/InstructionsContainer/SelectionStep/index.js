@@ -5,17 +5,47 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { StylesProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import messages from 'utils/messages';
 import styles from './selectionStep.module.scss';
 
 const SelectionStep = ({
   stepText,
   heading,
   bodyText,
-  buttonText,
   isButtonShown,
-  buttonFunction,
+  saveSelection,
+  updateSelection,
   selectedPhotos,
+  photoGrid,
 }) => {
+  const renderButton = () => {
+    if (photoGrid && photoGrid.data && photoGrid.data[0] && isButtonShown) {
+      return (
+        <Button
+          variant="contained"
+          className={styles.saveButton}
+          onClick={updateSelection}
+          disabled={selectedPhotos.size < 9}>
+          {messages.selectorPage.updateButtonText}
+        </Button>
+      );
+    }
+
+    if (isButtonShown) {
+      return (
+        <Button
+          variant="contained"
+          className={styles.saveButton}
+          onClick={saveSelection}
+          disabled={selectedPhotos.size < 9}>
+          {messages.selectorPage.saveButtonText}
+        </Button>
+      );
+    }
+
+    return '';
+  };
+
   return (
     <StylesProvider injectFirst>
       <Box>
@@ -28,17 +58,7 @@ const SelectionStep = ({
         <Typography variant="body1" className={styles.bodyText} gutterBottom>
           {bodyText}
         </Typography>
-        {isButtonShown ? (
-          <Button
-            variant="contained"
-            className={styles.saveButton}
-            onClick={buttonFunction}
-            disabled={selectedPhotos.size < 9}>
-            {buttonText}
-          </Button>
-        ) : (
-          ''
-        )}
+        {renderButton()}
       </Box>
     </StylesProvider>
   );
@@ -46,22 +66,28 @@ const SelectionStep = ({
 
 const mapStateToProps = ({ photoSelection }) => ({
   selectedPhotos: photoSelection.selectedPhotos,
+  photoGrid: photoSelection.photoGrid,
 });
 
 SelectionStep.propTypes = {
   stepText: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
   bodyText: PropTypes.string.isRequired,
-  buttonText: PropTypes.string,
   isButtonShown: PropTypes.bool,
-  buttonFunction: PropTypes.func,
+  updateSelection: PropTypes.func,
+  saveSelection: PropTypes.func,
   selectedPhotos: PropTypes.instanceOf(Map).isRequired,
+  photoGrid: PropTypes.shape({
+    status: PropTypes.number,
+    data: PropTypes.arrayOf(PropTypes.object),
+  }),
 };
 
 SelectionStep.defaultProps = {
   isButtonShown: true,
-  buttonText: '',
-  buttonFunction: () => {},
+  updateSelection: () => {},
+  saveSelection: () => {},
+  photoGrid: {},
 };
 
 export default connect(mapStateToProps)(memo(SelectionStep));

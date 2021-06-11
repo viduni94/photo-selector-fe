@@ -100,6 +100,7 @@
         "html": "ignore",
         "exceptions": ["Label"]
     }],
+    "react-hooks/exhaustive-deps": 0,
     "react/require-default-props": [2, { "forbidDefaultForRequired": true }],
     "jsx-a11y/control-has-associated-label": 0,
     "jsx-a11y/anchor-is-valid": 0,
@@ -115,6 +116,7 @@
     "unicorn/prevent-abbreviations": 0,
     "unicorn/numeric-separators-style": 0,
     "unicorn/consistent-function-scoping": 0,
+    "unicorn/prefer-spread": 0,
     "no-console": 0
   },
   "plugins": ["prettier", "unicorn", "import", "react", "react-hooks", "testing-library", "jest-dom"],

@@ -2,13 +2,24 @@ import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import PhotoGrid from 'components/PhotoGrid';
+import { fetchPhotoGrid } from 'pages/Home/actions';
 import { getAllPhotos, storeSelectedPhotos } from 'pages/PhotoSelector/actions';
 import styles from './gridContainer.module.scss';
 
 class GridContainer extends PureComponent {
   componentDidMount() {
-    const { getAllPhotos: getAllPhotosAction } = this.props;
+    const { getAllPhotos: getAllPhotosAction, fetchPhotoGrid: fetchPhotoGridAction } = this.props;
     getAllPhotosAction();
+    fetchPhotoGridAction();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { photoGrid, storeSelectedPhotos: storeSelectedPhotosAction } = this.props;
+
+    if (prevProps.photoGrid !== photoGrid && photoGrid && photoGrid.data && photoGrid.data[0]) {
+      const entriesMap = new Map(photoGrid.data[0].entries.map(entry => [entry.id, entry]));
+      storeSelectedPhotosAction(entriesMap);
+    }
   }
 
   // Select or deselect photo for the photo grid
@@ -39,7 +50,6 @@ class GridContainer extends PureComponent {
           tileData={uploadedPhotos}
           selectedPhotos={selectedPhotos}
           togglePhotoSelection={this.togglePhotoSelection}
-          saveSelection={this.saveSelection}
         />
       </div>
     );
@@ -49,6 +59,7 @@ class GridContainer extends PureComponent {
 const mapStateToProps = ({ photoSelector, photoSelection }) => ({
   uploadedPhotos: photoSelector.uploadedPhotos,
   selectedPhotos: photoSelection.selectedPhotos,
+  photoGrid: photoSelection.photoGrid,
 });
 
 GridContainer.propTypes = {
@@ -56,10 +67,18 @@ GridContainer.propTypes = {
   getAllPhotos: PropTypes.func.isRequired,
   selectedPhotos: PropTypes.instanceOf(Map).isRequired,
   storeSelectedPhotos: PropTypes.func.isRequired,
+  photoGrid: PropTypes.shape({
+    status: PropTypes.number,
+    data: PropTypes.arrayOf(PropTypes.object),
+  }),
+  fetchPhotoGrid: PropTypes.func.isRequired,
 };
 
 GridContainer.defaultProps = {
   uploadedPhotos: [],
+  photoGrid: {},
 };
 
-export default connect(mapStateToProps, { getAllPhotos, storeSelectedPhotos })(GridContainer);
+export default connect(mapStateToProps, { getAllPhotos, storeSelectedPhotos, fetchPhotoGrid })(
+  GridContainer,
+);

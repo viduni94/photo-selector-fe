@@ -1,4 +1,4 @@
 // eslint-disable-next-line import/prefer-default-export
-export const to = promise => {
+export const handle = promise => {
   return promise.then(res => [undefined, res]).catch(error => [error]);
 };

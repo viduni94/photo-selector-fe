@@ -4,22 +4,23 @@ import SelectionStep from 'pages/PhotoSelector/InstructionsContainer/SelectionSt
 import messages from 'utils/messages';
 import styles from './instructionsContainer.module.scss';
 
-const InstructionsContainer = ({ saveSelection }) => {
+const InstructionsContainer = ({ saveSelection, updateSelection }) => {
   return (
     <div className={styles.main}>
       <SelectionStep
-        stepText={messages.homePage.stepTextOne}
-        heading={messages.homePage.headingOne}
-        bodyText={messages.homePage.bodyTextOne}
+        stepText={messages.selectorPage.stepTextOne}
+        heading={messages.selectorPage.headingOne}
+        bodyText={messages.selectorPage.bodyTextOne}
         isButtonShown={false}
       />
       <SelectionStep
-        stepText={messages.homePage.stepTextTwo}
-        heading={messages.homePage.headingTwo}
-        bodyText={messages.homePage.bodyTextTwo}
-        buttonText={messages.homePage.saveButtonText}
+        stepText={messages.selectorPage.stepTextTwo}
+        heading={messages.selectorPage.headingTwo}
+        bodyText={messages.selectorPage.bodyTextTwo}
+        buttonText={messages.selectorPage.saveButtonText}
         isButtonShown
-        buttonFunction={saveSelection}
+        saveSelection={saveSelection}
+        updateSelection={updateSelection}
       />
     </div>
   );
@@ -27,6 +28,7 @@ const InstructionsContainer = ({ saveSelection }) => {
 
 InstructionsContainer.propTypes = {
   saveSelection: PropTypes.func.isRequired,
+  updateSelection: PropTypes.func.isRequired,
 };
 
 export default memo(InstructionsContainer);
