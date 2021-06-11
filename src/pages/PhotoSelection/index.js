@@ -44,7 +44,7 @@ const PhotoSelection = ({
           </Button>
         </div>
         <div className={styles.photoGridContainer}>
-          <PhotoGrid tileData={data ? data[0].entries : []} isEditMode={false} />
+          <PhotoGrid tileData={data && data[0] ? data[0].entries : []} isEditMode={false} />
         </div>
       </>
     );

@@ -16,7 +16,8 @@ const Home = ({ photoGrid, isFetchPhotoGridPending, fetchPhotoGrid: fetchPhotoGr
   }, []);
 
   useEffect(() => {
-    const photoGridEntries = photoGrid && photoGrid.data && photoGrid.data[0].entries;
+    const photoGridEntries =
+      photoGrid && photoGrid.data && photoGrid.data[0] && photoGrid.data[0].entries;
     setPhotoGridForComponent(photoGridEntries);
   }, [Object.keys(photoGrid)]);
 
