@@ -12,6 +12,13 @@ Client application which uses React Hooks, Redux, JSX transform, etc to implemen
 
 ## How to use
 
+### Clone the server
+1. `git clone git@github.com:viduni94/photo-selector-be.git <YOUR_PROJECT_NAME>`
+2. `cd <YOUR_PROJECT_NAME>`
+3. `npm install`
+4. `npm start`
+
+### Clone the client
 1. `git clone git@github.com:viduni94/photo-selector-fe.git <YOUR_PROJECT_NAME>`
 2. `cd <YOUR_PROJECT_NAME>`
 3. `yarn`
