@@ -7,6 +7,10 @@ import PageLoader from 'components/PageLoader';
 import constants from 'utils/constants';
 import { fetchPhotoGrid } from './actions';
 
+/**
+ * The component that initially loads in the application
+ * and decides which component to load based on data
+ */
 const Home = ({ photoGrid, isFetchPhotoGridPending, fetchPhotoGrid: fetchPhotoGridAction }) => {
   const history = useHistory();
   const [photoGridForComponent, setPhotoGridForComponent] = useState();

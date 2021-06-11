@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+/**
+ * Full page loader component
+ */
 const PageLoader = () => {
   const classes = useStyles();
 

@@ -27,6 +27,7 @@ export const storeSelectedPhotos = selectedPhotos => {
   };
 };
 
+// Fetch saved photo grid from the database
 export const fetchPhotoGrid = () => async dispatch => {
   dispatch(fetchPhotoGridPending());
   try {

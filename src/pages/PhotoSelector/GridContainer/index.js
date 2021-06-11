@@ -6,6 +6,10 @@ import { fetchPhotoGrid } from 'pages/Home/actions';
 import { getAllPhotos, storeSelectedPhotos } from 'pages/PhotoSelector/actions';
 import styles from './gridContainer.module.scss';
 
+/**
+ * The component that contains the photo grid of
+ * uploaded photos
+ */
 class GridContainer extends PureComponent {
   componentDidMount() {
     const { getAllPhotos: getAllPhotosAction, fetchPhotoGrid: fetchPhotoGridAction } = this.props;

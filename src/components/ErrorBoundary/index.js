@@ -2,6 +2,10 @@ import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import messages from 'utils/messages';
 
+/**
+ * The component that catches any unexpected error
+ * that occurs
+ */
 class ErrorBoundary extends PureComponent {
   constructor(props) {
     super(props);

@@ -4,6 +4,9 @@ import SelectionStep from 'pages/PhotoSelector/InstructionsContainer/SelectionSt
 import messages from 'utils/messages';
 import styles from './instructionsContainer.module.scss';
 
+/**
+ * The component that contains the instructions for photo selection
+ */
 const InstructionsContainer = ({ saveSelection, updateSelection }) => {
   return (
     <div className={styles.main}>

@@ -34,6 +34,9 @@ const getBadgeContentForPhoto = ({ photoId, selectedPhotos, index, isEditMode })
   return index + 1;
 };
 
+/**
+ * The Photo Grid component that holds the given photo in a grid format
+ */
 const PhotoGrid = ({ tileData, selectedPhotos, togglePhotoSelection, isEditMode }) => {
   return (
     <StylesProvider injectFirst>

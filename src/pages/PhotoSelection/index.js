@@ -11,6 +11,9 @@ import constants from 'utils/constants';
 import messages from 'utils/messages';
 import styles from './photoSelection.module.scss';
 
+/**
+ * The component that contains the photo grid
+ */
 const PhotoSelection = ({
   photoGrid,
   fetchPhotoGrid: fetchPhotoGridAction,
@@ -26,6 +29,8 @@ const PhotoSelection = ({
     history.push(constants.paths.photoSelector);
   };
 
+  // Renders photo grid if the data is available
+  // Renders page loader is the photo grid is being fetched
   const renderPhotoGrid = () => {
     if (isFetchPhotoGridPending) {
       return <PageLoader />;

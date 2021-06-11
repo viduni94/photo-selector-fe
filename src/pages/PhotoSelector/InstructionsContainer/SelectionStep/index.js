@@ -8,6 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import messages from 'utils/messages';
 import styles from './selectionStep.module.scss';
 
+/**
+ * The component that contains single instruction steps and
+ * relevant actions
+ */
 const SelectionStep = ({
   stepText,
   heading,
