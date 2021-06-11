@@ -43,7 +43,7 @@ Client application which uses React Hooks, Redux, JSX transform, etc to implemen
 ### Photo Selector with no photo selection (initial load)
 ![photo-selector](https://user-images.githubusercontent.com/20037159/121685558-b51b9900-cadd-11eb-898d-1d433dc438b4.png)
 
-### Photo Selector with photos selected for the grid
+### Photo Selector with photos selected for the grid - Edit Mode
 ![photo-selector-with-selected-photos](https://user-images.githubusercontent.com/20037159/121685612-c4024b80-cadd-11eb-9fbd-8fab442189c5.png)
 
 ### Generated photo grid
