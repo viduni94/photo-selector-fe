@@ -31,6 +31,19 @@ Client application which uses React Hooks, Redux, JSX transform, etc to implemen
 
 &nbsp;
 
+## Screenshots
+
+### Photo Selector with no photo selection (initial load)
+![photo-selector](https://user-images.githubusercontent.com/20037159/121685558-b51b9900-cadd-11eb-898d-1d433dc438b4.png)
+
+### Photo Selector with photos selected for the grid
+![photo-selector-with-selected-photos](https://user-images.githubusercontent.com/20037159/121685612-c4024b80-cadd-11eb-9fbd-8fab442189c5.png)
+
+### Generated photo grid
+![photo-grid](https://user-images.githubusercontent.com/20037159/121685634-cc5a8680-cadd-11eb-83a8-9d6cb33edbd5.png)
+
+&nbsp;
+
 ## Scripts
 
 - **`yarn start`** - Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.
